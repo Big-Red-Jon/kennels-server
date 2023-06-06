@@ -65,7 +65,7 @@ def get_all_units():
 
 
 def get_single_unit(id):
-    request_unit = None
+    requested_unit = None
 
     for unit in UNITS:
         if unit["id"] == id:
