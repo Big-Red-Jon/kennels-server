@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from units.request import get_all_units, get_single_unit
+from factions import get_all_factions, get_single_faction
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -43,6 +44,12 @@ class HandleRequests(BaseHTTPRequestHandler):
 
             else:
                 response = f"{get_all_units()}"
+
+        if resource == "factions":
+            if id is not None:
+                response = f"{get_single_faction(id)}"
+            else:
+                response = f"{get_all_factions()}"
 
         self.wfile.write(f"{response}".encode())
 
