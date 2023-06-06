@@ -2,7 +2,7 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from units.request import get_all_units, get_single_unit
 from factions import get_all_factions, get_single_faction
 from unitType import get_all_unitTypes, get_single_unitType
-from lists import get_all_lists, get_single_list, create_list
+from lists import get_all_lists, get_single_list, create_list, delete_list
 import json
 
 
@@ -85,6 +85,14 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     def do_PUT(self):
         self.do_POST()
+
+    def do_DELETE(self):
+        self._set_headers(204)
+        (resource, id) = self.parse_url(self.path)
+        if resource == "lists":
+            delete_list(id)
+
+        self.wfile.write("".encode())
 
 
 def main():
