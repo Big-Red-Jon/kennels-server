@@ -48,3 +48,23 @@ def create_list(list):
     list["id"] = new_id
     LISTS.append(list)
     return list
+
+
+def delete_list(id):
+    list_index = -1
+    for index, list in enumerate(LISTS):
+        if list["id"] == id:
+            list_index = index
+    if list_index >= 0:
+        LISTS.pop(list_index)
+
+
+#  {
+#         "id":  1,
+#         "commander": 1,
+#         "operative": 1,
+#         "corps": [1, 1, 1],
+#         "specialForces": [1, 1],
+#         "support": [1, 1],
+#         "heavy": 1
+# }
