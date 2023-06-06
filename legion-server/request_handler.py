@@ -36,10 +36,10 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         print(self.path)
 
-        if self.path == "/animals":
+        if self.path == "/units":
             response = [
-                {"id": 1, "name": "Snickers", "species": "Dog"},
-                {"id": 2, "name": "Lenny", "species": "Cat"}
+                {"id": 1, "name": "StormTroopers", "faction": "Empire"},
+                {"id": 2, "name": "ShoreTroopers", "faction": "Empire"}
             ]
 
         else:
