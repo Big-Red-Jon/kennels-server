@@ -2,6 +2,8 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from units.request import get_all_units, get_single_unit
 from factions import get_all_factions, get_single_faction
 from unitType import get_all_unitTypes, get_single_unitType
+from lists import get_all_lists, get_single_list, create_list
+import json
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -39,6 +41,13 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         (resource, id) = self.parse_url(self.path)
 
+        if resource == "lists":
+            if id is not None:
+                response = f"{get_single_list(id)}"
+
+            else:
+                response = f"{get_all_lists()}"
+
         if resource == "units":
             if id is not None:
                 response = f"{get_single_unit(id)}"
@@ -62,11 +71,17 @@ class HandleRequests(BaseHTTPRequestHandler):
 
     def do_POST(self):
         self._set_headers(201)
-
         content_len = int(self.headers.get('content-length', 0))
         post_body = self.rfile.read(content_len)
-        response = f"received post request:<br>{post_body}"
-        self.wfile.write(response.encode())
+        post_body = json.loads(post_body)
+        (resource, id) = self.parse_url(self.path)
+
+        new_list = None
+
+        if resource == "lists":
+            new_list = create_list(post_body)
+
+        self.wfile.write(f"{new_list}".encode())
 
     def do_PUT(self):
         self.do_POST()
