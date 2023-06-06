@@ -1,4 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from units import get_all_units
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -37,10 +38,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         print(self.path)
 
         if self.path == "/units":
-            response = [
-                {"id": 1, "name": "StormTroopers", "faction": "Empire"},
-                {"id": 2, "name": "ShoreTroopers", "faction": "Empire"}
-            ]
+            response = get_all_units()
 
         else:
             response = []
