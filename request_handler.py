@@ -1,5 +1,5 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from units.request import get_all_units
+from units.request import get_all_units, get_single_unit
 
 
 class HandleRequests(BaseHTTPRequestHandler):
@@ -38,10 +38,10 @@ class HandleRequests(BaseHTTPRequestHandler):
         print(self.path)
 
         if self.path == "/units":
-            response = get_all_units()
+            response = f"{get_single_unit(id)}"
 
         else:
-            response = []
+            response = get_all_units()
 
         self.wfile.write(f"{response}".encode())
 

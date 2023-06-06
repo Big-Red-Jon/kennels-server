@@ -62,3 +62,12 @@ UNITS = [
 
 def get_all_units():
     return UNITS
+
+
+def get_single_unit(id):
+    request_unit = None
+
+    for unit in UNITS:
+        if unit["id"] == id:
+            requested_unit = unit
+    return requested_unit
