@@ -13,7 +13,7 @@ FACTIONS = [
     },
     {
         "id": 4,
-        "name": "Seperatists"
+        "name": "Separatists"
     },
     {
         "id": 5,
