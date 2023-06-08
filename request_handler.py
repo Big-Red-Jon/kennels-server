@@ -3,7 +3,7 @@ from units.request import get_all_units, get_single_unit
 from factions import get_all_factions, get_single_faction
 from unitType import get_all_unitTypes, get_single_unitType
 from defense_dice import get_all_defense_dice, get_single_defense_dice
-from lists import get_all_lists, get_single_list, create_list, delete_list
+from lists import get_all_lists, get_single_list, create_list, delete_list, update_list
 from keywords import get_all_keywords, get_single_keyword
 from upgrade import get_all_upgrades, get_single_upgrade
 from weapon import get_all_weapons, get_single_weapon
@@ -112,7 +112,20 @@ class HandleRequests(BaseHTTPRequestHandler):
         self.wfile.write(f"{new_list}".encode())
 
     def do_PUT(self):
-        self.do_POST()
+        self._set_headers(204)
+        content_len = int(self.headers.get('content-length', 0))
+        post_body = self.rfile.read(content_len)
+        post_body = json.loads(post_body)
+
+        # Parse the URL
+        (resource, id) = self.parse_url(self.path)
+
+        # Delete a single animal from the list
+        if resource == "lists":
+            update_list(id, post_body)
+
+        # Encode the new animal and send in response
+        self.wfile.write("".encode())
 
     def do_DELETE(self):
         self._set_headers(204)

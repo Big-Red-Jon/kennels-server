@@ -59,6 +59,13 @@ def delete_list(id):
         LISTS.pop(list_index)
 
 
+def update_list(id, new_list):
+    for index, list in enumerate(LISTS):
+        if list["id"] == id:
+            LISTS[index] = new_list
+            break
+
+
 #  {
 #         "id":  1,
 #         "commander": 1,
