@@ -2,7 +2,9 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from units.request import get_all_units, get_single_unit
 from factions import get_all_factions, get_single_faction
 from unitType import get_all_unitTypes, get_single_unitType
+from defense_dice import get_all_defense_dice, get_single_defense_dice
 from lists import get_all_lists, get_single_list, create_list, delete_list
+from keywords import get_all_keywords, get_single_keyword
 import json
 
 
@@ -66,6 +68,18 @@ class HandleRequests(BaseHTTPRequestHandler):
                 response = f"{get_single_unitType(id)}"
             else:
                 response = f"{get_all_unitTypes()}"
+
+        if resource == "defense_dice":
+            if id is not None:
+                response = f"{get_single_defense_dice(id)}"
+            else:
+                response = f"{get_all_defense_dice()}"
+
+        if resource == "keywords":
+            if id is not None:
+                response = f"{get_single_keyword(id)}"
+            else:
+                response = f"{get_all_keywords()}"
 
         self.wfile.write(f"{response}".encode())
 
