@@ -4,7 +4,7 @@ LISTS = [
         "commander": 1,
         "operative": 1,
         "corps": [1, 2, 3],
-        "specialForces": [2, 2],
+        "special_forces": [2, 2],
         "support": [1, 1],
         "heavy": 1
     },
@@ -13,7 +13,7 @@ LISTS = [
         "commander": 2,
         "operative": 1,
         "corps": [1, 2, 3],
-        "specialForces": [2, 2],
+        "special_forces": [2, 2],
         "support": [1, 1],
         "heavy": 1
     },
@@ -22,7 +22,7 @@ LISTS = [
         "commander": 2,
         "operative": 1,
         "corps": [1, 2, 3],
-        "specialForces": [2, 2],
+        "special_forces": [2, 2],
         "support": [1, 1],
         "heavy": 1
     }
@@ -64,7 +64,7 @@ def delete_list(id):
 #         "commander": 1,
 #         "operative": 1,
 #         "corps": [1, 1, 1],
-#         "specialForces": [1, 1],
+#         "special_forces": [1, 1],
 #         "support": [1, 1],
 #         "heavy": 1
 # }
