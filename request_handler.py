@@ -5,6 +5,8 @@ from unitType import get_all_unitTypes, get_single_unitType
 from defense_dice import get_all_defense_dice, get_single_defense_dice
 from lists import get_all_lists, get_single_list, create_list, delete_list
 from keywords import get_all_keywords, get_single_keyword
+from upgrade import get_all_upgrades, get_single_upgrade
+from weapon import get_all_weapons, get_single_weapon
 import json
 
 
@@ -80,6 +82,18 @@ class HandleRequests(BaseHTTPRequestHandler):
                 response = f"{get_single_keyword(id)}"
             else:
                 response = f"{get_all_keywords()}"
+
+        if resource == "upgrade":
+            if id is not None:
+                response = f"{get_single_upgrade(id)}"
+            else:
+                response = f"{get_all_upgrades()}"
+
+        if resource == "weapon":
+            if id is not None:
+                response = f"{get_single_weapon(id)}"
+            else:
+                response = f"{get_all_weapons()}"
 
         self.wfile.write(f"{response}".encode())
 
