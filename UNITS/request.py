@@ -18,6 +18,7 @@ UNITS = [
         "weaponId": [1, 2],
         "keyword_id": 1,
         "upgrade_id": [1, 2, 3],
+        "unit_img": "https://static.wikia.nocookie.net/starwarslegion/images/8/80/Swl01_unit_stormtrooper.png/revision/latest?cb=20171231012659"
     },
     {
         "id": 2,
@@ -37,6 +38,7 @@ UNITS = [
         "keyword_id": [3, 4],
         "weaponId": [1, 2],
         "upgrade_id": [1, 2, 3],
+        "unit_img": "https://starwarslegion.fandom.com/wiki/Shoretroopers?file=Shoretroopers.png"
     },
     {
         "id": 2,
@@ -56,6 +58,7 @@ UNITS = [
         "keyword_id": 2,
         "weaponId": [1, 2],
         "upgrade_id": [1, 2, 3],
+        "unit_img": "https://starwarslegion.fandom.com/wiki/Snowtroopers?file=Snowtroopers_new.png"
     }
 ]
 
