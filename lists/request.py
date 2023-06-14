@@ -1,30 +1,30 @@
 LISTS = [
     {
         "id":  1,
-        "commander": 1,
-        "operative": 1,
-        "corps": [1, 2, 3],
-        "special_forces": [2, 2],
-        "support": [1, 1],
-        "heavy": 1
+        "commander_id": 1,
+        "operative_id": 1,
+        "corps_id": [1, 2, 3],
+        "special_forces_id": [2, 2],
+        "support_id": [1, 1],
+        "heavy_id": 1
     },
     {
         "id":  2,
-        "commander": 2,
-        "operative": 1,
-        "corps": [1, 2, 3],
+        "commander_id": 2,
+        "operative_id": 1,
+        "corps_id": [1, 2, 3],
         "special_forces": [2, 2],
-        "support": [1, 1],
-        "heavy": 1
+        "support_id": [1, 1],
+        "heavy_id": 1
     },
     {
         "id":  3,
-        "commander": 2,
-        "operative": 1,
-        "corps": [1, 2, 3],
-        "special_forces": [2, 2],
-        "support": [1, 1],
-        "heavy": 1
+        "commander_id": 2,
+        "operative_id": 1,
+        "corps_id": [1, 2, 3],
+        "special_forces_id": [2, 2],
+        "support_id": [1, 1],
+        "heavy_id": 1
     }
 ]
 
@@ -68,10 +68,10 @@ def update_list(id, new_list):
 
 #  {
 #         "id":  1,
-#         "commander": 1,
-#         "operative": 1,
-#         "corps": [1, 1, 1],
-#         "special_forces": [1, 1],
-#         "support": [1, 1],
-#         "heavy": 1
+#         "commander_id": 1,
+#         "operative_id": 1,
+#         "corps_id": [1, 1, 1],
+#         "special_forces_id": [1, 1],
+#         "support_id": [1, 1],
+#         "heavy_id_id": 1
 # }
