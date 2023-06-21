@@ -1,3 +1,6 @@
+import sqlite3
+import json
+
 UNITTYPES = [
     {
         "id": 1,

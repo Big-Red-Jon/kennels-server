@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 pylint = "*"
+autopep8 = "*"
+watchgod = "*"
 
 [dev-packages]
 
