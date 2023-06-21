@@ -1,5 +1,6 @@
 import sqlite3
 import json
+from models import List
 
 LISTS = [
     {
@@ -33,7 +34,35 @@ LISTS = [
 
 
 def get_all_lists():
-    return LISTS
+    with sqlite3.connect("./legion.db") as conn:
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        SELECT
+            l.id,
+            l.commander_id,
+            l.operative_id,
+            l.corps_id,
+            l.special_forces_id,
+            l.support_id,
+            l.heavy_id
+        FROM list u
+        """)
+
+        lists = []
+
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+
+            list = List(row["id"], row["commander_id"], row["operative_id"],
+                        row["corps_id"], row["special_forces_id"], row["support_id"],
+                        row["heavy_id"]
+                        )
+            lists.append(lists.__dict__)
+
+    return json.dumps(lists)
 
 
 def get_single_list(id):
