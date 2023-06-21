@@ -1,5 +1,6 @@
 import sqlite3
 import json
+from models import Faction
 
 FACTIONS = [
     {
@@ -26,7 +27,29 @@ FACTIONS = [
 
 
 def get_all_factions():
-    return FACTIONS
+    with sqlite3.connect("./legion.db") as conn:
+
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        SELECT
+            f.id,
+            f.name
+        FROM faction f
+        """)
+
+        factions = []
+
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+
+            faction = Faction(row["id"], row["name"]
+                              )
+            factions.append(factions.__dict__)
+
+    return json.dumps(factions)
 
 
 def get_single_faction(id):
