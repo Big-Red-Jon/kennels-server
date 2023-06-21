@@ -5,13 +5,13 @@ CREATE TABLE `DefenseDice` (
 );
 CREATE TABLE `Faction` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    `name` TEXT NOT NULL,
+    `name` TEXT NOT NULL
 );
 CREATE TABLE `Keyword` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     `title` TEXT NOT NULL,
     `description` TEXT NOT NULL,
-    `type` TEXT NOT NULL,
+    `type` TEXT NOT NULL
 );
 CREATE TABLE `List` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -26,7 +26,7 @@ CREATE TABLE `List` (
     FOREIGN KEY(`corps_id`) REFERENCES `Unit`(`id`),
     FOREIGN KEY(`special_forces_id`) REFERENCES `Unit`(`id`),
     FOREIGN KEY(`support_id`) REFERENCES `Unit`(`id`),
-    FOREIGN KEY(`heavy_id`) REFERENCES `Unit`(`id`),
+    FOREIGN KEY(`heavy_id`) REFERENCES `Unit`(`id`)
 );
 CREATE TABLE `Unit` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -51,17 +51,17 @@ CREATE TABLE `Unit` (
     FOREIGN KEY(`unit_type_id`) REFERENCES `UnitType`(`id`),
     FOREIGN KEY(`weapon_id`) REFERENCES `Weapon`(`id`),
     FOREIGN KEY(`keyword_id`) REFERENCES `Keyword`(`id`),
-    FOREIGN KEY(`upgrade_id`) REFERENCES `Upgrade`(`id`),
+    FOREIGN KEY(`upgrade_id`) REFERENCES `Upgrade`(`id`)
 );
 CREATE TABLE `UnitType` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    `description` TEXT NOT NULL,
+    `description` TEXT NOT NULL
 );
 CREATE TABLE `Upgrade` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     `name` TEXT NOT NULL,
     `card_id` INTEGER NOT NULL,
-    `keyword_id` INTEGER NOT NULL,
+    `keyword_id` INTEGER NOT NULL
 );
 CREATE TABLE `Weapon` (
     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
@@ -70,6 +70,7 @@ CREATE TABLE `Weapon` (
     `red_dice` INTEGER NOT NULL,
     `white_dice` INTEGER NOT NULL,
     `keyword_id` INTEGER NOT NULL,
-    `range` TEXT NOT NULL `unique_weapon` INTEGER NOT NULL,
-    FOREIGN KEY(`keyword_id`) REFERENCES `Keyword`(`id`),
+    `range` TEXT NOT NULL,
+    `unique_weapon` INTEGER NOT NULL,
+    FOREIGN KEY(`keyword_id`) REFERENCES `Keyword`(`id`)
 );
