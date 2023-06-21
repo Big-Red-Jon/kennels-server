@@ -1,3 +1,6 @@
+import sqlite3
+import json
+from models import Unit
 
 UNITS = [
     {
@@ -64,7 +67,50 @@ UNITS = [
 
 
 def get_all_units():
-    return UNITS
+
+    with sqlite3.connect("./legion.db") as conn:
+
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        SELECT
+            u.id,
+            u.name,
+            u.unit_type_id,
+            u.amount,
+            u.speed,
+            u.faction_id,
+            u.point_cost,
+            u.owned_amount,
+            u.health,
+            u.courage,
+            u.defense_dice_id,
+            u.surge_to_hit,
+            u.surge_to_crit,
+            u.surge_to_defend,
+            u.keyword_id,
+            u.weapon_id,
+            u.upgrade_id
+        FROM unit u
+        """)
+
+        units = []
+
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+
+            unit = Unit(row['id'], row['name'], row['unit_type_id'],
+                        row['amount'], row['speed'], row['faction_id'],
+                        row['point_cost'], row['owned_amount'], row['health'],
+                        row['courage'], row['defense_dice_id'], row['surge_to_hit'], row['surge_to_crit'], row[
+                'surge_to_defend'], row['keyword_id'], row['weapon_id'], row['upgrade_id']
+            )
+
+            units.append(units.__dict__)
+
+    return json.dumps(units)
 
 
 def get_single_unit(id):

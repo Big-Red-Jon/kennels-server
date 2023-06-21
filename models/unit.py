@@ -38,5 +38,5 @@ class Unit():
         self.upgrade_id = upgrade_id
 
 
-new_unit = Unit(4, "DeathTroopers", 4, 4, 2, 1, 76, 2, 1,
-                2, 2, True, False, True, [1, 2], 2, [1, 4])
+# new_unit = Unit(4, "DeathTroopers", 4, 4, 2, 1, 76, 2, 1,
+#                 2, 2, True, False, True, [1, 2], 2, [1, 4])

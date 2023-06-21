@@ -1,3 +1,6 @@
+import sqlite3
+import json
+
 WEAPONS = [
     {
         "id": 1,
