@@ -1,5 +1,6 @@
 import sqlite3
 import json
+from models import DefenseDice
 
 DEFENSEDICE = [
     {
@@ -14,7 +15,29 @@ DEFENSEDICE = [
 
 
 def get_all_defense_dice():
-    return DEFENSEDICE
+    with sqlite3.connect("./legion.db") as conn:
+
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        SELECT
+            d.id,
+            d.color
+        FROM defensedice d
+        """)
+
+        defensedice = []
+
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+
+            defensedie = DefenseDice(row["id"], row["color"]
+                                     )
+            defensedice.append(defensedice.__dict__)
+
+    return json.dumps(defensedice)
 
 
 def get_single_defense_dice(id):

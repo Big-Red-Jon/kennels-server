@@ -1,5 +1,6 @@
 import sqlite3
 import json
+from models import UnitType
 
 UNITTYPES = [
     {
@@ -30,7 +31,30 @@ UNITTYPES = [
 
 
 def get_all_unitTypes():
-    return UNITTYPES
+    with sqlite3.connect("/legion.db") as conn:
+
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        SELECT
+            u.id,
+            u.description    
+        FROM unitType u         
+        """)
+
+        unitTypes = []
+
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+
+            unittype = UnitType(row['id'], row['description']
+                                )
+
+            unitTypes.append(unitTypes.__dict__)
+
+    return json.dumps(unitTypes)
 
 
 def get_single_unitType(id):

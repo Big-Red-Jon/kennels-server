@@ -1,5 +1,6 @@
 import sqlite3
 import json
+from models import Keywords
 
 KEYWORDS = [
     {
@@ -217,7 +218,32 @@ KEYWORDS = [
 
 
 def get_all_keywords():
-    return KEYWORDS
+
+    with sqlite3.connect("./legion.db") as conn:
+
+        conn.row_factory = sqlite3.Row
+        db_cursor = conn.cursor()
+
+        db_cursor.execute("""
+        SELECT
+            k.id,
+            k.title,
+            k.description,
+            k.type
+        FROM keywords k
+        """)
+
+        keywords = []
+
+        dataset = db_cursor.fetchall()
+
+        for row in dataset:
+
+            keyword = Keywords(row["id"], row["title"], row["description"], row["type"]
+                               )
+            keywords.append(keywords.__dict__)
+
+    return json.dumps(keywords)
 
 
 def get_single_keyword(id):
