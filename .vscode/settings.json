@@ -7,7 +7,7 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
-            "name": "Python Legion",
+            "name": "Python Empire",
             "database": "legion.db"
         }
     ]

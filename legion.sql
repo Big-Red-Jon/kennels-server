@@ -1,8 +1,11 @@
 -- CREATE TABLE `DefenseDice` (
 --     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
---     `name` TEXT NOT NULL,
 --     `color` TEXT NOT NULL
 -- );
+INSERT INTO `DefenseDice`
+VALUES (null, "red");
+INSERT INTO `DefenseDice`
+VALUES (null, "white");
 -- CREATE TABLE `Faction` (
 --     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 --     `name` TEXT NOT NULL
@@ -28,7 +31,7 @@
 --     FOREIGN KEY(`support_id`) REFERENCES `Unit`(`id`),
 --     FOREIGN KEY(`heavy_id`) REFERENCES `Unit`(`id`)
 -- );
--- CREATE TABLE `Unit` (
+-- ALTER TABLE `Unit` (
 --     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 --     `name` TEXT NOT NULL,
 --     `unit_type_id` INTEGER NOT NULL,
@@ -42,7 +45,7 @@
 --     `surge_to_hit` INTEGER NOT NULL,
 --     `surge_to_crit` INTEGER NOT NULL,
 --     `surge_to_defend` INTEGER NOT NULL,
---     'courage' INTEGER NOT NULL,
+--     `courage` INTEGER NOT NULL,
 --     `weapon_id` INTEGER NOT NULL,
 --     `keyword_id` INTEGER NOT NULL,
 --     `upgrade_id` INTEGER NOT NULL,
@@ -75,3 +78,329 @@
 --     `unique_weapon` INTEGER NOT NULL,
 --     FOREIGN KEY(`keyword_id`) REFERENCES `Keyword`(`id`)
 -- );
+-- CREATE TABLE `Faction` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `name` TEXT NOT NULL
+-- );
+-- CREATE TABLE `Keyword` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `title` TEXT NOT NULL,
+--     `description` TEXT NOT NULL,
+--     `type` TEXT NOT NULL
+-- );
+-- CREATE TABLE `List` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `commander_id` INTEGER NOT NULL,
+--     `operative_id` INTEGER NOT NULL,
+--     `corps_id` INTEGER NOT NULL,
+--     `special_forces_id` INTEGER NOT NULL,
+--     `support_id` INTEGER NOT NULL,
+--     `heavy_id` INTEGER NOT NULL,
+--     FOREIGN KEY(`commander_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`operative_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`corps_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`special_forces_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`support_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`heavy_id`) REFERENCES `Unit`(`id`)
+-- );
+-- ALTER TABLE `Unit` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `name` TEXT NOT NULL,
+--     `unit_type_id` INTEGER NOT NULL,
+--     `amount` INTEGER NOT NULL,
+--     `speed` INTEGER NOT NULL,
+--     `faction_id` INTEGER NOT NULL,
+--     `point_cost` INTEGER NOT NULL,
+--     `owned_amount` INTEGER NOT NULL,
+--     `health` INTEGER NOT NULL,
+--     `defense_dice_id` INTEGER NOT NULL,
+--     `surge_to_hit` INTEGER NOT NULL,
+--     `surge_to_crit` INTEGER NOT NULL,
+--     `surge_to_defend` INTEGER NOT NULL,
+--     `courage` INTEGER NOT NULL,
+--     `weapon_id` INTEGER NOT NULL,
+--     `keyword_id` INTEGER NOT NULL,
+--     `upgrade_id` INTEGER NOT NULL,
+--     `unit_img` TEXT NOT NULL,
+--     FOREIGN KEY(`faction_id`) REFERENCES `Faction`(`id`),
+--     FOREIGN KEY(`defense_dice_id`) REFERENCES `DefenseDice`(`id`),
+--     FOREIGN KEY(`unit_type_id`) REFERENCES `UnitType`(`id`),
+--     FOREIGN KEY(`weapon_id`) REFERENCES `Weapon`(`id`),
+--     FOREIGN KEY(`keyword_id`) REFERENCES `Keyword`(`id`),
+--     FOREIGN KEY(`upgrade_id`) REFERENCES `Upgrade`(`id`)
+-- );
+-- CREATE TABLE `UnitType` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `description` TEXT NOT NULL
+-- );
+-- CREATE TABLE `Upgrade` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `name` TEXT NOT NULL,
+--     `card_id` INTEGER NOT NULL,
+--     `keyword_id` INTEGER NOT NULL
+-- );
+-- CREATE TABLE `Weapon` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `name` TEXT NOT NULL,
+--     `black_dice` INTEGER NOT NULL,
+--     `red_dice` INTEGER NOT NULL,
+--     `white_dice` INTEGER NOT NULL,
+--     `keyword_id` INTEGER NOT NULL,
+--     `range` TEXT NOT NULL,
+--     `unique_weapon` INTEGER NOT NULL,
+--     FOREIGN KEY(`keyword_id`) REFERENCES `Keyword`(`id`)
+-- );
+-- CREATE TABLE `Faction` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `name` TEXT NOT NULL
+-- );
+-- CREATE TABLE `Keyword` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `title` TEXT NOT NULL,
+--     `description` TEXT NOT NULL,
+--     `type` TEXT NOT NULL
+-- );
+-- CREATE TABLE `List` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `commander_id` INTEGER NOT NULL,
+--     `operative_id` INTEGER NOT NULL,
+--     `corps_id` INTEGER NOT NULL,
+--     `special_forces_id` INTEGER NOT NULL,
+--     `support_id` INTEGER NOT NULL,
+--     `heavy_id` INTEGER NOT NULL,
+--     FOREIGN KEY(`commander_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`operative_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`corps_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`special_forces_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`support_id`) REFERENCES `Unit`(`id`),
+--     FOREIGN KEY(`heavy_id`) REFERENCES `Unit`(`id`)
+-- );
+-- ALTER TABLE `Unit` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `name` TEXT NOT NULL,
+--     `unit_type_id` INTEGER NOT NULL,
+--     `amount` INTEGER NOT NULL,
+--     `speed` INTEGER NOT NULL,
+--     `faction_id` INTEGER NOT NULL,
+--     `point_cost` INTEGER NOT NULL,
+--     `owned_amount` INTEGER NOT NULL,
+--     `health` INTEGER NOT NULL,
+--     `defense_dice_id` INTEGER NOT NULL,
+--     `surge_to_hit` INTEGER NOT NULL,
+--     `surge_to_crit` INTEGER NOT NULL,
+--     `surge_to_defend` INTEGER NOT NULL,
+--     `courage` INTEGER NOT NULL,
+--     `weapon_id` INTEGER NOT NULL,
+--     `keyword_id` INTEGER NOT NULL,
+--     `upgrade_id` INTEGER NOT NULL,
+--     `unit_img` TEXT NOT NULL,
+--     FOREIGN KEY(`faction_id`) REFERENCES `Faction`(`id`),
+--     FOREIGN KEY(`defense_dice_id`) REFERENCES `DefenseDice`(`id`),
+--     FOREIGN KEY(`unit_type_id`) REFERENCES `UnitType`(`id`),
+--     FOREIGN KEY(`weapon_id`) REFERENCES `Weapon`(`id`),
+--     FOREIGN KEY(`keyword_id`) REFERENCES `Keyword`(`id`),
+--     FOREIGN KEY(`upgrade_id`) REFERENCES `Upgrade`(`id`)
+-- );
+-- CREATE TABLE `UnitType` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `description` TEXT NOT NULL
+-- );
+-- CREATE TABLE `Upgrade` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `name` TEXT NOT NULL,
+--     `card_id` INTEGER NOT NULL,
+--     `keyword_id` INTEGER NOT NULL
+-- );
+-- CREATE TABLE `Weapon` (
+--     `id` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+--     `name` TEXT NOT NULL,
+--     `black_dice` INTEGER NOT NULL,
+--     `red_dice` INTEGER NOT NULL,
+--     `white_dice` INTEGER NOT NULL,
+--     `keyword_id` INTEGER NOT NULL,
+--     `range` TEXT NOT NULL,
+--     `unique_weapon` INTEGER NOT NULL,
+--     FOREIGN KEY(`keyword_id`) REFERENCES `Keyword`(`id`)
+-- );
+-- INSERT INTO `Faction`
+-- VALUES (null, "Empire");
+-- INSERT INTO `Faction`
+-- VALUES (null, "Rebellion");
+-- INSERT INTO `Faction`
+-- VALUES (null, "Republic");
+-- INSERT INTO `Faction`
+-- VALUES (null, "Seperatists");
+-- INSERT INTO `Faction`
+-- VALUES (null, "Shadow Collective");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Arm", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Beam", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Blast", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Critical", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Cumbersome", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Detonate", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Fixed: Front/Rear", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "High Velocity", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Immobilize", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Immune: Deflect", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Ion", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Lethal", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Long Shot", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Overrun", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Pierce", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Ram", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Self Destruct", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Scatter", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Spray", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Suppressive", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Tow Cable", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Versatile", "Null", "Weapon");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Bane Tokens", "Null", "Command Card");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Cycle", "Null", "Command Card");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Divulge", "Null", "Command Card");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Graffiti Tokens", "Null", "Command Card");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Permanent", "Null", "Command Card");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Leader", "Null", "Upgrade");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "NonCombatant", "Null", "Upgrade");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Reconfigure", "Null", "Upgrade");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Repair: Capacity", "Null", "Upgrade");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "SideArm: melee/ranged", "Null", "Upgrade");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Small", "Null", "Upgrade");
+-- INSERT INTO `Keyword`
+-- VALUES (null, "Treat: Capacity", "Null", "Upgrade");
+-- INSERT INTO `List`
+-- VALUES (null, 1, 1, [1,2,3], [2,2], [1,1], 1);
+-- INSERT INTO `List`
+-- VALUES (null, 2, 2, [1,2,3], [2,2], [1,1], 1);
+-- INSERT INTO `List`
+-- VALUES (null, 2, 1, [1,2,3], [2,2], [1,1], 1);
+-- INSERT INTO `Unit`
+-- VALUES (
+--         null,
+--         "Stormtroopers",
+--         3,
+--         4,
+--         2,
+--         1,
+--         44,
+--         4,
+--         1,
+--         1,
+--         2,
+--         "True",
+--         "False",
+--         "False",
+--         [1,2],
+--         1,
+--         [1,2,3],
+--         "https://static.wikia.nocookie.net/starwarslegion/images/8/80/Swl01_unit_stormtrooper.png/revision/latest?cb=20171231012659"
+--     );
+-- INSERT INTO `Unit`
+-- VALUES (
+--         null,
+--         "Shoretroopers",
+--         3,
+--         4,
+--         2,
+--         1,
+--         52,
+--         2,
+--         1,
+--         1,
+--         2,
+--         "False",
+--         "False",
+--         "False",
+--         [1,2],
+--         1,
+--         [1,2,3],
+--         "https://starwarslegion.fandom.com/wiki/Shoretroopers?file=Shoretroopers.png"
+--     );
+-- INSERT INTO `Unit`
+-- VALUES (
+--         null,
+--         "SnowTroopers",
+--         3,
+--         4,
+--         1,
+--         1,
+--         48,
+--         3,
+--         1,
+--         1,
+--         2,
+--         "False",
+--         "False",
+--         "False",
+--         2,
+--         [1,2],
+--         [1,2,3],
+--         "https://starwarslegion.fandom.com/wiki/Snowtroopers?file=Snowtroopers_new.png"
+--     );
+-- INSERT INTO `UnitType`
+-- VALUES (null, "Commander");
+-- INSERT INTO `UnitType`
+-- VALUES (null, "Operative");
+-- INSERT INTO `UnitType`
+-- VALUES (null, "Corps");
+-- INSERT INTO `UnitType`
+-- VALUES (null, "Special Forces");
+-- INSERT INTO `UnitType`
+-- VALUES (null, "Support");
+-- INSERT INTO `UnitType`
+-- VALUES (null, "Heavy");
+-- Add Upgrade Later
+-- INSERT INTO "Weapon"
+-- VALUES(
+--         null,
+--         "Force Lightning",
+--         2,
+--         2,
+--         2,
+--         [0,0],
+--         ["0","1-2"],
+--         "True"
+--     );
+-- INSERT INTO "Weapon"
+-- VALUES(
+--         null,
+--         "Vader"s Lightsaber",
+--         2,
+--         2,
+--         2,
+--         [0,0],
+--         ["0","1-2'],
+--         "True"
+--     );
